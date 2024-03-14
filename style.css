@@ -1,0 +1,588 @@
+/* Follow along to add CSS grid styles to the elements as indicated in the comments below (they will include the text "TO DO") */
+
+/* The root element is where we create our CSS variables */
+:root{
+	/* Color theme from Adobe colors */
+	--purple: #C682D9;
+	--dk-blue: #033E8C;
+	--lt-blue: #04C4D9;
+	--mint: #65BFA6;
+	--yellow: #F2B705;
+	
+	/* A transparent version of our light blue, used in the navigation border */
+	--lt-blue-rgba: rgba(4, 196, 217, 0);
+	
+	--red: #c66;
+	--orange: #e94;
+	--yellow-2: #ed0;
+	--green: #9d5;
+	--green-2: #4d8;
+	--blue: #0bc;
+	--purple-2: #C682D9;
+	
+	--off-white: #f8f6f1;
+	--lt-gray: #eaeaea;
+	--med-gray: #555;
+	--dk-gray: #222;
+	
+	--body-fonts: Lato, Verdana, sans-serif;
+	
+	--box-shadow-sm: 3px 3px 7px var(--med-gray);
+	--box-shadow-lg: 6px 6px 10px var(--med-gray);
+	
+	--filter-shadow-sm: drop-shadow(4px 4px 8px var(--med-gray));
+}
+
+/* ----- BODY STYLES ----- */
+body{
+	background: var(--dk-blue) url('data:image/svg+xml,%3Csvg width="42" height="44" viewBox="0 0 42 44" xmlns="http://www.w3.org/2000/svg"%3E%3Cg id="Page-1" fill="none" fill-rule="evenodd"%3E%3Cg id="brick-wall" fill="%2300295f" fill-opacity="0.4"%3E%3Cpath d="M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+	color: var(--dk-gray);
+	line-height: 1.5;
+	font-family: var(--body-fonts);
+	font-size: 1rem;
+	margin: 0;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+/* ----- HEADER/MAIN/FOOTER COMMON STYLES ----- */
+header, main, footer{
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	box-shadow: 8px 8px 16px var(--dk-gray);
+}
+
+/* ----- HEADER/FOOTER COMMON STYLES ----- */
+header, footer{
+	background-color: var(--dk-blue);
+	padding: 2rem 0;
+}
+
+/* ----- HEADER STYLES ----- */
+header{
+	/* Make this a grid container/parent, with the first column set to 0.5fr and the last two set to 2fr. include a 1rem gap and align the items in the grid to the center */
+	display: grid;
+	grid-template-columns: 0.5fr 2fr 2fr;
+	gap: 1rem;
+	align-items: center;
+	color: var(--off-white);
+}
+
+/* ----- LINK STYLES ----- */
+a{
+	display: block;
+	padding: 1rem;
+}
+
+/* ----- LOGO & ANCHOR STYLES ----- */
+header svg{
+	fill: var(--lt-blue);
+	width: 75px;
+	height: 75px;
+	transition: all 500ms;
+}
+
+header > a{
+	transition: all 500ms;
+	margin-left: 1rem;
+}
+
+header > a:hover{
+	transform: rotate(45deg);
+	margin-left: 1.25rem;
+}
+
+header a:hover svg{
+	fill: var(--yellow);
+	transform: scale(1.25);
+}
+
+/* ----- HEADING STYLES ----- */
+h1{
+	font-size: 2.25rem;
+	margin: 0;
+}
+
+h2{
+	font-size: 1.75rem;
+	margin: 0;
+	text-align: center;
+}
+
+h3{
+	font-size: 1.5rem;
+	padding: 1rem;
+	margin: 0;
+	background-color: var(--lt-blue);
+	border-radius: 8px;
+	box-shadow: var(--box-shadow-sm);
+	text-align: center;
+}
+
+/* ----- NAVIGATION STYLES ----- */
+nav ul{
+	list-style-type: none;
+	padding: 0 1rem 0 0;
+	/* TO DO: make this a grid container with 3 equal-width columns, with a 1rem gap between the columns */
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	
+}
+
+nav a{
+	text-decoration: none;
+	text-align: center;
+	color: var(--off-white);
+	font-size: 1.45rem;
+	font-weight: bold;
+	border-top: 8px dashed var(--lt-blue-rgba);
+	border-bottom: 8px dashed var(--lt-blue-rgba);
+	transition: border-color 300ms;
+}
+
+nav a:hover{
+	border-top: 8px dashed var(--lt-blue);
+	border-bottom: 8px dashed var(--lt-blue);
+}
+
+/* ----- MAIN STYLES ----- */
+main{
+	background-color: var(--off-white);
+	padding: 2rem 0;
+}
+
+/* ----- MAIN SECTION STYLES ----- */
+main > section{
+	padding: 0 1rem;
+}
+
+/* ----- TEXT STYLES ----- */
+p{
+	max-width: 65ch;
+	margin: 0 auto;
+}
+
+/* ----- IMAGE STYLES ----- */
+img{
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: 1rem auto;
+}
+
+/* ----- CODE FORMATTING STYLES ----- */
+pre, pre.hljs{
+	font-size: 1.2rem;
+	width: 100%;
+	height: 200px;
+	overflow: scroll;
+	border-radius: 8px;
+	background-color: var(--lt-gray);
+	border-radius: 8px;
+	box-shadow: var(--box-shadow-sm);
+}
+
+code.hljs{
+	background-color: var(--lt-gray);
+	margin: -3em 0;
+	overflow-x: hidden;
+}
+
+p code{
+	color: var(--dk-blue);
+	font-weight: bold;
+	background-color: var(--yellow-rgba);
+}
+
+#ex1 pre, #ex2 pre{
+	height: 350px;
+}
+
+/* ----- REQUIRED SECTION STYLES ----- */
+#required{
+	width: 1000px;
+	margin: 1rem auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+}
+
+#required h2, #required > p{
+	grid-column: 1/2;
+}
+
+#required > img{
+	width: 450px;
+	grid-column: 2/3;
+	grid-row: 1/4;
+	filter: var(--filter-shadow-sm);
+	align-self: center;
+}
+
+#required h3{
+	margin: 2rem 0 1rem 0;
+}
+
+/* ----- MULTI-GRID SECTION STYLES ----- */
+#multi-grids{
+	background-color: var(--off-white);
+	opacity: 0.8;
+	background-image:  
+		linear-gradient(#04C4D9 2.1px, transparent 2.1px), 
+		linear-gradient(to right, #04C4D9 2.1px, #f8f6f1 2.1px);
+	background-size: 42px 42px;
+	margin: 2rem auto;
+	padding: 2rem 2rem 3.9rem 2rem;
+}
+
+#multi-grids > div{
+	width: 800px;
+	margin: 2rem auto;
+	padding: 2rem;
+	border-radius: 8px;
+	background-color: var(--lt-gray);
+	box-shadow: var(--box-shadow-sm);
+	/* TO DO: make this a grid container with 6 equal columns, with a 16px gap */
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 16px;	
+}
+
+#multi-grids h2, #multi-grids p{
+	/* TO DO: make these items span all columns in their parent container's grid */
+	grid-column: 1 / -1;
+}
+
+#multi-grids img{
+	width: 100px;
+}
+
+.adobe{
+	filter: var(--filter-shadow-sm);	
+}
+
+/* ----- PRACTICE SECTION STYLES ----- */
+#practice{
+	padding: 2rem;
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	gap: 32px;
+}
+
+#practice h2, #practice p, #practice strong{
+	grid-column: 1/-1;
+}
+
+#practice h2, #practice strong{
+	background-color: var(--yellow);
+	padding: 1rem 0;
+	border-radius: 8px;
+	box-shadow: var(--box-shadow-sm);
+}
+
+#practice section{
+	padding: 1rem;
+	border: 1px solid var(--lt-gray);
+	border-radius: 8px;
+	box-shadow: var(--box-shadow-sm);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+#practice div{
+	box-shadow: var(--box-shadow-sm);
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	border-radius: 8px;
+}
+
+#practice div p{
+	margin: 2rem 0;
+	width: fit-content;
+	height: 3rem;
+	font-size: 1.75rem;
+	font-weight: bold;
+}
+
+#practice pre{
+	height: auto;
+	max-height: 250px;
+	margin: 0;
+}
+
+#practice code{
+	font-size: 1rem;
+	width: fit-content;
+}
+
+#practice strong{
+	font-size: 1.75rem;
+	text-align: center;
+}
+
+/* ----- BACKGROUND COLOR CLASSES/DIVS STYLES ----- */
+.red{
+	background-color: var(--red);
+	min-height: 100px;
+}
+
+.orange{
+	background-color: var(--orange);
+	min-height: 100px;
+}
+
+.yellow{
+	background-color: var(--yellow-2);
+	min-height: 100px;
+}
+
+.green{
+	background-color: var(--green);
+	min-height: 100px;
+}
+
+.green-2{
+	background-color: var(--green-2);
+	min-height: 100px;
+}
+
+.blue{
+	background-color: var(--blue);
+	min-height: 100px;
+}
+
+.purple{
+	background-color: var(--purple-2);
+	min-height: 100px;
+}
+
+/* ----- TWO-COLUMN GRID SECTION STYLES ----- */
+#two-col-grid{
+	grid-column: 1/span 4;
+}
+
+#two-col-grid > div{
+	/* TO DO: make this a grid container with 2 equal columns, with a 16px gap */
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+	box-shadow: none;
+}
+
+/* ----- THREE-COLUMN GRID SECTION STYLES ----- */
+#three-col-grid{
+	grid-column: 5/span 4;
+}
+
+#three-col-grid > div{
+	/* TO DO: make this a grid container with 3 equal columns, with a 16px gap */
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
+	
+	box-shadow: none;
+}
+
+/* ----- FOUR-COLUMN GRID SECTION STYLES ----- */
+#four-col-grid{
+	grid-column: 9/span 4;
+}
+
+#four-col-grid > div{
+	/* TO DO: make this a grid container with 4 equal columns, with a 16px gap */
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1rem;
+	box-shadow: none;
+}
+
+/* ----- LAYOUT 1 SECTION STYLES ----- */
+#layout1{
+	grid-column: 1/span 6;
+}
+
+#layout1 > div{
+	/* TO DO: make this a grid container with 4 equal columns, with a 16px gap */
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1rem;
+	box-shadow: none;
+}
+
+#layout1 pre{
+	height: auto;
+	margin: 0;
+}
+
+#layout1 .red{
+	/* TO DO: make this item span all columns in its parent container's grid */
+	grid-column: 1 / -1;
+}
+
+/* ----- LAYOUT 2 SECTION STYLES ----- */
+#layout2{
+	grid-column: 7/span 6;
+}
+
+#layout2 > div{
+	/* TO DO: make this a grid container with 4 equal columns, with a 16px gap */
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1rem;
+	
+	box-shadow: none;
+}
+
+#layout2 .red, #layout2 .yellow{
+	/* TO DO: make these items span all columns in their parent container's grid */
+	grid-column: 1 / -1
+}
+
+#layout2 .green{
+	/* TO DO: make this item span 2 columns in its parent container's grid */
+	grid-column: 3/span 2;
+}
+
+/* ----- LAYOUT 3 SECTION STYLES ----- */
+#layout3{
+	grid-column: 1/span 6;	
+}
+
+#layout3 > div{
+	/* TO DO: make this a grid container with 3 equal columns and 2 equal rows, with a 16px gap */
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	gap: 1rem;
+	box-shadow: none;
+}
+
+#layout3 .red{
+	/* TO DO: make this item span 2 rows in the first column of its parent container's grid */
+	grid-row: 1/3;
+	grid-column: 1/2;
+}
+
+/* ----- LAYOUT 4 SECTION STYLES ----- */
+#layout4{
+	grid-column: 7/span 6;
+}
+
+#layout4 > div{
+	/* TO DO: make this a grid container with 4 equal columns and 2 equal rows, with a 16px gap */
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	gap: 1rem;
+	box-shadow: none;
+}
+
+#layout4 .red{
+	/* TO DO: make this item span 2 rows in the first column of its parent container's grid */
+	grid-row: span 2;
+}
+
+#layout4 .purple{
+	/* TO DO: make this item span 2 rows in the last column of its parent container's grid */
+	grid-row: 1 / -1;
+	grid-column: 4;
+}
+
+/* ----- EXAMPLE 1 SECTION STYLES ----- */
+#ex1{
+	grid-column: 1 / span 6;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	align-items: stretch;
+}
+
+
+#ex1 #example1{
+	/* TO DO: make this a grid container with 2 equal columns and 4 equal rows, with a 16px gap */
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	gap: 1rem;	
+	box-shadow: none;
+}
+
+#example1 .red, #example1 .blue{
+	/* TO DO: make these items span all columns of its parent container's grid */
+	grid-column: 1 / -1;
+}
+
+/* ----- EXAMPLE 2 SECTION STYLES ----- */
+#ex2{
+	grid-column: 7 / span 6;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	align-items: stretch;
+}
+
+#ex2 #example2{
+	/* TO DO: make this a grid container with 3 equal columns and 4 equal rows, with a 16px gap */
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	gap: 1rem;	
+	box-shadow: none;
+}
+
+#example2 .red, #example2 .green-2{
+	/* TO DO: make these items span all columns of its parent container's grid */
+	grid-column: 1 / -1;
+}
+
+#example2 .blue{
+	/* TO DO: make this item span 2 rows of its parent container's grid */
+	grid-row: span 2;
+}
+
+/* ----- FOOTER STYLES ----- */
+footer{
+	color: var(--off-white);
+	text-align: center;
+}
+
+/* ----- SOCIAL MEDIA SECTION STYLES ----- */
+#social{
+	width: 325px;
+	margin: 1rem auto;
+	/* TO DO: make this a grid container with 3 equal columns and a 10px gap, then justify and align everything in this container to the center */
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	justify-content: center;
+	align-items: center;
+	
+}
+
+#social h2{
+	/* TO DO: make this item span all columns of its parent container's grid */
+	grid-column: 1 / -1;
+}
+
+#social a{
+	transition: all 200ms;
+}
+
+#social svg{
+	stroke: var(--off-white);
+	padding: 4px 4px 0 4px;
+	transition: all 300ms;
+}
+
+#social a:hover{
+	background-color: var(--lt-blue);
+	border-radius: 50%;
+	box-shadow: var(--box-shadow-sm);
+}
+
+#social a:hover svg{
+	stroke: var(--dk-gray);
+}
